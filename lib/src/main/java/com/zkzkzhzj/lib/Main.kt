@@ -1,20 +1,27 @@
 package com.zkzkzhzj.lib
 
-import com.zkzkzhzj.lib.observer.FirstUser
-import com.zkzkzhzj.lib.observer.SecondUser
-import com.zkzkzhzj.lib.observer.WebToon
+import com.zkzkzhzj.lib.strategy.FirstUser
+import com.zkzkzhzj.lib.strategy.HighRangeSkill
+import com.zkzkzhzj.lib.strategy.NormalRangeSkill
+import com.zkzkzhzj.lib.strategy.SecondUser
 
 
 fun main(){
-    val webToon = WebToon()
+    val firstUser = FirstUser("user1")
+    val secondUser = SecondUser("user2")
 
-    val firstUser = FirstUser()
-    val secondUser = SecondUser()
+    firstUser.normalSkill()
+    firstUser.highSkill()
+    secondUser.normalSkill()
+    secondUser.highSkill()
 
-    webToon.addUser(firstUser)
-    webToon.addUser(secondUser)
+    println()
 
-    webToon.update()
+    firstUser.setNormalSkill(NormalRangeSkill())
+    secondUser.setHighSkill(HighRangeSkill())
 
-    webToon.update()
+    firstUser.normalSkill()
+    firstUser.highSkill()
+    secondUser.normalSkill()
+    secondUser.highSkill()
 }
